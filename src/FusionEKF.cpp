@@ -64,10 +64,18 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
       // TODO: Convert radar from polar to cartesian coordinates 
       //         and initialize state.
+	  ekf_.x_ << measurement_pack.raw_measurements_[0], 
+				 measurement_pack.raw_measurements_[1], 
+                 measurement_pack.raw_measurements_[2], 
+                 measurement_pack.raw_measurements_[3]; 
 
     }
     else if (measurement_pack.sensor_type_ == MeasurementPackage::LASER) {
       // TODO: Initialize state.
+	  ekf_.x_ << measurement_pack.raw_measurements_[0], 
+                 measurement_pack.raw_measurements_[1], 
+                 0, 
+                 0;
 
     }
 
@@ -109,6 +117,9 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
             0, t_cube*noise_ay/2, 0, t_sqr*noise_ay;
 
    ekf_.Predict();
+   
+   VectorXd z=VectorXd(4);
+   
 
   /**
    * Update
@@ -122,10 +133,12 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
   if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
     // TODO: Radar updates
+	z<< measurement_pack.raw_measurements_[0],measurement_pack.raw_measurements_[1],measurement_pack.raw_measurements_[2],measurement_pack.raw_measurements_[3];
 	//ekf_.UpdateEKF(z);
 
   } else {
     // TODO: Laser updates
+	z<< measurement_pack.raw_measurements_[0],measurement_pack.raw_measurements_[1],0,0;
 	//ekf_.Update(z);
 
   }
