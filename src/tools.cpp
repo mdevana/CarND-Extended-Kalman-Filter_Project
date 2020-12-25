@@ -16,7 +16,7 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
    */
   VectorXd rmse(4);
   rmse << 0,0,0,0;
-  
+  /*
   if ((estimations.size()==0) || (estimations.size()!=ground_truth.size())){
     cout<<"invalid inputs";
     return(rmse);
@@ -38,7 +38,7 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
   rmse=rmse/estimations.size();
 
   // TODO: calculate the squared root
-  rmse=rmse.array().sqrt();
+  rmse=rmse.array().sqrt();*/
   
   return (rmse);
 }
