@@ -67,12 +67,12 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
 
   // check division by zero
   float den=px*px+py*py;
-  if (den==0) {
+  /*if (den==0) {
       std::cout<<"division by Zero"<<endl;
       return (Hj);
   }
   
-  /*
+  
   // compute the Jacobian matrix
   Hj<< px/(sqrt(den)),py/(sqrt(den)),0,0,
        -py/den, px/den,0,0,
