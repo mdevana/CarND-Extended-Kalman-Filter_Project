@@ -72,6 +72,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     }
 
     // done initializing, no need to predict or update
+	previous_timestamp_=measurement_pack.timestamp_;
     is_initialized_ = true;
     return;
   }
@@ -86,8 +87,28 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
    * TODO: Update the process noise covariance matrix.
    * Use noise_ax = 9 and noise_ay = 9 for your Q matrix.
    */
+   float dt = (measurement_pack.timestamp_-previous_timestamp_)/1000000;
+   previous_timestamp_=measurement_pack.timestamp_;
+   
+   ekf_.F_(0,2)=dt;
+   ekf_.F_(1,3)=dt;
+   
+   float t_sqr=dt*dt;
+   float t_cube=dt*dt*dt;
+   float t_quad=dt*dt*dt*dt;
+   
+   float noise_ax=9.0;
+   float noise_ay=9.0;
+  
+  
+   ekf_.Q_=MatrixXd(4,4);
+   
+   ekf_.Q_ << t_quad*noise_ax/4, 0, t_cube*noise_ax/2, 0,
+            0, t_quad*noise_ay/4, 0, t_cube*noise_ay/2,
+            t_cube*noise_ax/2, 0, t_sqr*noise_ax, 0,
+            0, t_cube*noise_ay/2, 0, t_sqr*noise_ay;
 
-  ekf_.Predict();
+   ekf_.Predict();
 
   /**
    * Update
@@ -101,9 +122,11 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
 
   if (measurement_pack.sensor_type_ == MeasurementPackage::RADAR) {
     // TODO: Radar updates
+	//ekf_.UpdateEKF(z);
 
   } else {
     // TODO: Laser updates
+	//ekf_.Update(z);
 
   }
 
