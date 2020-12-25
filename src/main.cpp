@@ -31,6 +31,7 @@ string hasData(string s) {
 }
 
 int main() {
+  std::cout << "Madhu : in Main.cpp " << std::endl;
   uWS::Hub h;
 
   // Create a Kalman Filter instance
@@ -41,7 +42,7 @@ int main() {
   vector<VectorXd> estimations;
   vector<VectorXd> ground_truth;
   
-  std::cout << "Madhu : in Main.cpp " << std::endl;
+  
 
   h.onMessage([&fusionEKF,&tools,&estimations,&ground_truth]
               (uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
