@@ -67,7 +67,7 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
 
   // check division by zero
   float den=px*px+py*py;
-  if (den==0) {
+  /*if (den==0) {
       std::cout<<"dividion by Zero"<<endl;
       return (Hj);
   }
@@ -76,7 +76,7 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
   // compute the Jacobian matrix
   Hj<< px/(sqrt(den)),py/(sqrt(den)),0,0,
        -py/den, px/den,0,0,
-       py*(vx*py-vy*px)/(den*sqrt(den)),py*(vy*px-vx*py)/(den*sqrt(den)),px/sqrt(den),py/sqrt(den);
+       py*(vx*py-vy*px)/(den*sqrt(den)),py*(vy*px-vx*py)/(den*sqrt(den)),px/sqrt(den),py/sqrt(den);*/
 
   return Hj;
 }
