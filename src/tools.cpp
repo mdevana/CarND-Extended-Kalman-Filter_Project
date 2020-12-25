@@ -1,5 +1,6 @@
 #include "tools.h"
 #include <iostream>
+#include <math.h>
 
 using Eigen::VectorXd;
 using Eigen::MatrixXd;
@@ -79,4 +80,11 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
        py*(vx*py-vy*px)/(den*sqrt(den)),py*(vy*px-vx*py)/(den*sqrt(den)),px/sqrt(den),py/sqrt(den);
 
   return Hj;
+}
+double Tools::NormalizeAngle(double angle){
+	
+    double a = fmod(angle + M_PI, 2 * M_PI);
+    return a >= 0 ? (a - M_PI) : (a + M_PI);
+
+	
 }
