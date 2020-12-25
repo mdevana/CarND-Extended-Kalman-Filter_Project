@@ -1,7 +1,7 @@
 #include "tools.h"
 #include <iostream>
 #include <math.h>
-const double M_PI = 3.14159265358979323846;
+
 
 using Eigen::VectorXd;
 using Eigen::MatrixXd;
@@ -83,9 +83,9 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
   return Hj;
 }
 double Tools::NormalizeAngle(double angle){
-	
-    double a = fmod(angle + M_PI, 2 * M_PI);
-    return a >= 0 ? (a - M_PI) : (a + M_PI);
+	const double N_PI = 3.14159265358979323846;
+    double a = fmod(angle + N_PI, 2 * N_PI);
+    return a >= 0 ? (a - N_PI) : (a + N_PI);
 
 	
 }
