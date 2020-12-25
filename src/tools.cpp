@@ -26,7 +26,7 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
     std::cout<<"invalid inputs";
     return(rmse);
   }
-  /*  
+    
   // TODO: accumulate squared residuals
   //cout<<estimations[0]<<endl;
   VectorXd a,b;
@@ -47,7 +47,7 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
   // TODO: calculate the squared root
   rmse=rmse.array().sqrt();
 
-  // return the result*/
+  // return the result
   return rmse;
 }
 
