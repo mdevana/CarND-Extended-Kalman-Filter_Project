@@ -40,10 +40,10 @@ void KalmanFilter::Update(const VectorXd &z) {
    
    //I = MatrixXd::Identity(4, 4);
    I = MatrixXd(4, 4);
-   I << 1,0,0,0,
+   /*I << 1,0,0,0,
         0,1,0,0,
 		0,0,1,0,
-		0,0,0,1;
+		0,0,0,1;*/
    
    /*x_ = x_ + ( K * y) ;
    P_ = (I - K * H_) * P_;*/
