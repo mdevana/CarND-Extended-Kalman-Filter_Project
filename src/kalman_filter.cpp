@@ -40,8 +40,8 @@ void KalmanFilter::Update(const VectorXd &z) {
    
    I = MatrixXd::Identity(4, 4);
    
-   x_ = x_ + ( K * y) ;
-   P_ = (I - K * H_) * P_;
+   /*x_ = x_ + ( K * y) ;
+   P_ = (I - K * H_) * P_;*/
 }
 
 void KalmanFilter::UpdateEKF(const VectorXd &z) {
