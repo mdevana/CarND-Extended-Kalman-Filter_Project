@@ -32,7 +32,7 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
   VectorXd a,b;
   VectorXd c;
   for (int i=0; i < estimations.size(); ++i) {
-    // ... your code here
+    
     a=estimations[i];
     b=ground_truth[i];
     c=a-b;
@@ -67,12 +67,12 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
 
   // check division by zero
   float den=px*px+py*py;
-  /*if (den==0) {
-      std::cout<<"dividion by Zero"<<endl;
+  if (den==0) {
+      std::cout<<"division by Zero"<<endl;
       return (Hj);
   }
   
-  
+  /*
   // compute the Jacobian matrix
   Hj<< px/(sqrt(den)),py/(sqrt(den)),0,0,
        -py/den, px/den,0,0,
