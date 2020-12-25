@@ -40,6 +40,8 @@ int main() {
   Tools tools;
   vector<VectorXd> estimations;
   vector<VectorXd> ground_truth;
+  
+  std::cout << "Madhu : in Main.cpp " << std::endl;
 
   h.onMessage([&fusionEKF,&tools,&estimations,&ground_truth]
               (uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, 
@@ -47,7 +49,7 @@ int main() {
     // "42" at the start of the message means there's a websocket message event.
     // The 4 signifies a websocket message
     // The 2 signifies a websocket event
-	std::cout << "Madhu : Getting into onmessage " << std::endl;
+	
     if (length && length > 2 && data[0] == '4' && data[1] == '2') {
       auto s = hasData(string(data));
 
