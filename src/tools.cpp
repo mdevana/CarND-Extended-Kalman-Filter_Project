@@ -23,7 +23,7 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
   //  * the estimation vector size should equal ground truth vector size
   
   if ((estimations.size()==0) || (estimations.size()!=ground_truth.size())){
-    cout<<"invalid inputs";
+    std::cout<<"invalid inputs";
     return(rmse);
   }
   /*  
