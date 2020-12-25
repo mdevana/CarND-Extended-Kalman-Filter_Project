@@ -38,9 +38,9 @@ void KalmanFilter::Update(const VectorXd &z) {
    MatrixXd S = H_ * P_ * H_.transpose() + R_ ;
    MatrixXd K = P_ * H_.transpose() * S.inverse();
    
-   I = MatrixXd::Identity(4, 4);
+   /*I = MatrixXd::Identity(4, 4);
    
-   /*x_ = x_ + ( K * y) ;
+   x_ = x_ + ( K * y) ;
    P_ = (I - K * H_) * P_;*/
 }
 
