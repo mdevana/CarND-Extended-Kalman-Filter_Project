@@ -1,6 +1,6 @@
 #include "tools.h"
 #include <iostream>
-
+#include <math.h>
 const double M_PI = 3.14159265358979323846;
 
 using Eigen::VectorXd;
