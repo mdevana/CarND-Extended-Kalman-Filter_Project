@@ -31,7 +31,7 @@ string hasData(string s) {
 }
 
 int main() {
-  std::cout << "Madhu : in Main.cpp " << std::endl;
+  
   uWS::Hub h;
 
   // Create a Kalman Filter instance
@@ -40,7 +40,7 @@ int main() {
   // used to compute the RMSE later
   Tools tools;
   //----------------------------------Test Code----------------
-  cout<<tools.NormalizeAngle(9.425)<<endl;
+  std::cout<<tools.NormalizeAngle(9.425)<<endl;
   //----------------------------------End Test Code-------------
   
   vector<VectorXd> estimations;
@@ -161,7 +161,7 @@ int main() {
 
   h.onConnection([&h](uWS::WebSocket<uWS::SERVER> ws, uWS::HttpRequest req) {
     std::cout << "Connected!!!" << std::endl;
-	std::cout << "Madhu : in Main.cpp " << std::endl;
+	
   });
 
   h.onDisconnection([&h](uWS::WebSocket<uWS::SERVER> ws, int code, 
