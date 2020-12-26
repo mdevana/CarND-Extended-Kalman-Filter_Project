@@ -99,6 +99,8 @@ VectorXd Tools::Cartesian2Polar(const VectorXd& x_cartesian){
   float py = x_cartesian(1);
   float vx = x_cartesian(2);
   float vy = x_cartesian(3);
+  
+  float rho, theta, rho_dot;
   /*
   float rho=sqrt(px*px+py*py);
   if (rho==0) {
