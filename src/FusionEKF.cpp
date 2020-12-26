@@ -40,8 +40,8 @@ FusionEKF::FusionEKF() {
   H_laser_ << 1, 0, 0, 0,
               0, 1, 0, 0;
 			  
-  float noise_ax=9.0;
-  float noise_ay=9.0;
+  noise_ax=9.0;
+  noise_ay=9.0;
 
 }
 
