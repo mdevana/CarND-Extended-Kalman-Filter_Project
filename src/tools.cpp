@@ -95,11 +95,11 @@ VectorXd Tools::Cartesian2Polar(const VectorXd& x_cartesian){
   VectorXd x_polar(3);
   x_polar<<0,0,0;  
 	
-  /*float px = x_cartesian(0);
+  float px = x_cartesian(0);
   float py = x_cartesian(1);
   float vx = x_cartesian(2);
   float vy = x_cartesian(3);
-  
+  /*
   float rho=sqrt(px*px+py*py);
   if (rho==0) {
       //std::cout<<"division by Zero"<<std::endl;
