@@ -101,8 +101,8 @@ VectorXd Tools::Cartesian2Polar(const VectorXd& x_cartesian){
   float vy = x_cartesian(3);
   
   float rho, theta, rho_dot;
-  
-  float rho=sqrt(px*px+py*py);
+  float den=px*px+py*py;
+  //float rho=sqrt(den);
   /*if (rho==0) {
       //std::cout<<"division by Zero"<<std::endl;
       return (x_polar);
