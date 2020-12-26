@@ -26,7 +26,7 @@ class Tools {
    * A helper method to calculate Jacobians.
    */
   Eigen::MatrixXd CalculateJacobian(const Eigen::VectorXd& x_state);
-
+  double NormalizeAngle(double angle);
 };
 
 #endif  // TOOLS_H_
