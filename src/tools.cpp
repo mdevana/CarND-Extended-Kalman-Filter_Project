@@ -112,7 +112,7 @@ VectorXd Tools::Cartesian2Polar(const VectorXd& x_cartesian){
   
   
   x_polar << rho,theta, rho_dot; 
-	
+  return x_polar;	
 	
 	
 	
