@@ -137,7 +137,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
     // TODO: Radar updates
 	z<< measurement_pack.raw_measurements_[0],measurement_pack.raw_measurements_[1],measurement_pack.raw_measurements_[2],0;
 	ekf_.R_ = R_radar_;
-	ekf_.H_=Hj_ = CalculateJacobian(x_predicted);
+	//Hj_ = CalculateJacobian(x_predicted);
+	ekf_.H_=Hj_;
 	//ekf_.UpdateEKF(z);
 
   } else {

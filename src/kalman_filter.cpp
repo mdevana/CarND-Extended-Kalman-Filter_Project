@@ -49,4 +49,13 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   /**
    * TODO: update the state by using Extended Kalman Filter equations
    */
+   VectorXd y = z - H_ * x_ ;//transformation cartesian to polar
+   MatrixXd S = H_ * P_ * H_.transpose() + R_ ;
+   MatrixXd K = P_ * H_.transpose() * S.inverse();
+   
+   long x_size = x_.size();
+   MatrixXd I = MatrixXd::Identity(x_size, x_size);
+      
+   x_ = x_ + ( K * y) ;
+   P_ = (I - K * H_) * P_;
 }
