@@ -108,12 +108,12 @@ VectorXd Tools::Cartesian2Polar(const VectorXd& x_cartesian){
       return (x_polar);
   }
     
-  float theta=atan2(py/px);
-  float rho_dot=(px*vx+py*vy)/(rho);
+  theta=atan2(py/px);
+  rho_dot=(px*vx+py*vy)/(rho);
   
   
   
-  //x_polar << rho,theta, rho_dot; 
+  x_polar << rho,theta, rho_dot; 
   return x_polar;	
 	
 	
