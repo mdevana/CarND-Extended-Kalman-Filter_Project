@@ -47,7 +47,7 @@ int main() {
   //std::cout<<tools.NormalizeAngle(6.283185)<<std::endl;
   VectorXd cart(4);
   cart << 1,1,1,1;
-  std::cout<<tools.Cartesian2Polar(cart)<<std::endl;
+  //std::cout<<tools.Cartesian2Polar(cart)<<std::endl;
   //----------------------------------End Test Code-------------
   
   vector<VectorXd> estimations;
