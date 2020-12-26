@@ -39,6 +39,10 @@ int main() {
 
   // used to compute the RMSE later
   Tools tools;
+  //----------------------------------Test Code----------------
+  cout<<tools.NormalizeAngle(9.425)<<endl;
+  //----------------------------------End Test Code-------------
+  
   vector<VectorXd> estimations;
   vector<VectorXd> ground_truth;
   

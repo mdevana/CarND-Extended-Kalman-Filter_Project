@@ -39,6 +39,9 @@ FusionEKF::FusionEKF() {
   
   H_laser_ << 1, 0, 0, 0,
               0, 1, 0, 0;
+			  
+  float noise_ax=9.0;
+  float noise_ay=9.0;
 
 }
 
@@ -97,7 +100,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
    * TODO: Update the process noise covariance matrix.
    * Use noise_ax = 9 and noise_ay = 9 for your Q matrix.
    */
-   float dt = (measurement_pack.timestamp_-previous_timestamp_)/1000000;
+   float dt = (measurement_pack.timestamp_-previous_timestamp_)/1000000.0;
    previous_timestamp_=measurement_pack.timestamp_;
    
    ekf_.F_(0,2)=dt;
@@ -107,8 +110,7 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
    float t_cube=dt*dt*dt;
    float t_quad=dt*dt*dt*dt;
    
-   float noise_ax=9.0;
-   float noise_ay=9.0;
+   
   
   
    ekf_.Q_=MatrixXd(4,4);
