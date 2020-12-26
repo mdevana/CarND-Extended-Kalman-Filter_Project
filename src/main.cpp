@@ -40,7 +40,7 @@ int main() {
   // used to compute the RMSE later
   Tools tools;
   //----------------------------------Test Code----------------
-  std::cout<<tools.NormalizeAngle(9.425)<<std::endl;
+  std::cout<<tools.NormalizeAngle(6.283185)<<std::endl;
   //----------------------------------End Test Code-------------
   
   vector<VectorXd> estimations;
