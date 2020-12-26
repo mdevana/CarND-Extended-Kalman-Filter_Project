@@ -26,7 +26,7 @@ class Tools {
    * A helper method to calculate Jacobians.
    */
   Eigen::MatrixXd CalculateJacobian(const Eigen::VectorXd& x_state);
-  Eigen::VectorXd Tools::Cartesian2Polar(const VectorXd& x_cartesian);
+  Eigen::VectorXd Cartesian2Polar(const VectorXd& x_cartesian);
   double NormalizeAngle(double angle);
 };
 
