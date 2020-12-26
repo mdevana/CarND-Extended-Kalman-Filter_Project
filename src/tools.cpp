@@ -70,7 +70,7 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
   // check division by zero
   float den=px*px+py*py;
   if (den==0) {
-      //std::cout<<"division by Zero"<<endl;
+      //std::cout<<"division by Zero"<<std::endl;
       return (Hj);
   }
   
@@ -87,5 +87,34 @@ double Tools::NormalizeAngle(double angle){
     double a = fmod(angle + N_PI, 2 * N_PI);
     return a >= 0 ? (a - N_PI) : (a + N_PI);
 
+	
+}
+
+VectorXd Tools::Cartesian2Polar(const VectorXd& x_cartesian){
+	
+  VectorXd x_polar(3);
+  x_polar<<0,0,0;  
+	
+  float px = x_cartesian(0);
+  float py = x_cartesian(1);
+  float vx = x_cartesian(2);
+  float vy = x_cartesian(3);
+  
+  float rho=sqrt(px*px+py*py);
+  if (rho==0) {
+      //std::cout<<"division by Zero"<<std::endl;
+      return (x_polar);
+  }
+  
+  double theta=atan2(py/px);
+  double rho_dot=(px*vx+py*vy)/(rho);
+  
+  
+  
+  x_polar << rho,theta, rho_dot; 
+	
+	
+	
+	
 	
 }
