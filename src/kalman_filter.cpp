@@ -49,7 +49,8 @@ void KalmanFilter::UpdateEKF(const VectorXd &z) {
   /**
    * TODO: update the state by using Extended Kalman Filter equations
    */
-   VectorXd y = z - H_ * x_ ;//transformation cartesian to polar
+   VectorXd y = z - tools.Cartesian2Polar(x_);//transformation cartesian to polar
+   y(1)=tools.NormalizeAngle(y(1));
    MatrixXd S = H_ * P_ * H_.transpose() + R_ ;
    MatrixXd K = P_ * H_.transpose() * S.inverse();
    
