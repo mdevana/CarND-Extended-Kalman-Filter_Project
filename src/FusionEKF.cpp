@@ -82,8 +82,8 @@ void FusionEKF::ProcessMeasurement(const MeasurementPackage &measurement_pack) {
       //         and initialize state.
 	  float rho_mea=measurement_pack.raw_measurements_[0];
 	  float theta_mea=measurement_pack.raw_measurements_[1];
-	  ekf_.x_ << rho_mea*cos(theta), 
-				 rho_mea*sin(theta), 
+	  ekf_.x_ << rho_mea*cos(theta_mea), 
+				 rho_mea*sin(theta_mea), 
                  0, 
                  0; 
 
