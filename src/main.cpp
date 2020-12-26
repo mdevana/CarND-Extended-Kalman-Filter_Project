@@ -41,6 +41,10 @@ int main() {
   Tools tools;
   //----------------------------------Test Code----------------
   std::cout<<tools.NormalizeAngle(-6.283185)<<std::endl;
+  std::cout<<tools.NormalizeAngle(-3.142)<<std::endl;
+  std::cout<<tools.NormalizeAngle(0)<<std::endl;
+  std::cout<<tools.NormalizeAngle(3.142)<<std::endl;
+  std::cout<<tools.NormalizeAngle(6.283185)<<std::endl;
   //----------------------------------End Test Code-------------
   
   vector<VectorXd> estimations;
