@@ -82,7 +82,8 @@ int main() {
           // reads first element from the current line
           string sensor_type;
           iss >> sensor_type;
-
+          
+		  // Check the type of measurement and prepare the MesasurementPackage Object
           if (sensor_type.compare("L") == 0) {
             meas_package.sensor_type_ = MeasurementPackage::LASER;
             meas_package.raw_measurements_ = VectorXd(2);
@@ -106,7 +107,8 @@ int main() {
             iss >> timestamp;
             meas_package.timestamp_ = timestamp;
           }
-
+		  
+		  // Add ground truth values to the vector ground_truth
           float x_gt;
           float y_gt;
           float vx_gt;
@@ -123,11 +125,11 @@ int main() {
           gt_values(3) = vy_gt;
           ground_truth.push_back(gt_values);
           
-          // Call ProcessMeasurement(meas_package) for Kalman filter
+          // Call ProcessMeasurement(meas_package) for Fusioning the data from Lidar and Radar
           fusionEKF.ProcessMeasurement(meas_package);       
 
-          // Push the current estimated x,y positon from the Kalman filter's 
-          //   state vector
+          // Push the current estimated x,y,vx, vy from fusionEKF object  
+          //   to estimated state vector
 
           VectorXd estimate(4);
 
@@ -142,9 +144,10 @@ int main() {
           estimate(3) = v2;
         
           estimations.push_back(estimate);
-
+	      // Calculate the Root mean square Error for estimations and ground truth 
           VectorXd RMSE = tools.CalculateRMSE(estimations, ground_truth);
-
+          
+		  // Send error data to simulator
           json msgJson;
           msgJson["estimate_x"] = p_x;
           msgJson["estimate_y"] = p_y;

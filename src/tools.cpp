@@ -14,12 +14,12 @@ Tools::~Tools() {}
 VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
                               const vector<VectorXd> &ground_truth) {
   /**
-   * TODO: Calculate the RMSE here.
+   * Calculate the RMSE here.
    */
   VectorXd rmse(4);
   rmse << 0,0,0,0;
 
-  // TODO: YOUR CODE HERE
+  
   // check the validity of the following inputs:
   //  * the estimation vector size should not be zero
   //  * the estimation vector size should equal ground truth vector size
@@ -29,7 +29,7 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
     return(rmse);
   }
     
-  // TODO: accumulate squared residuals
+  //  accumulate squared residuals
   //cout<<estimations[0]<<endl;
   VectorXd a,b;
   VectorXd c;
@@ -43,10 +43,10 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
     
   }
 
-  // TODO: calculate the mean
+  // calculate the mean
     rmse=rmse/estimations.size();
 
-  // TODO: calculate the squared root
+  // calculate the squared root
   rmse=rmse.array().sqrt();
 
   // return the result
@@ -55,7 +55,7 @@ VectorXd Tools::CalculateRMSE(const vector<VectorXd> &estimations,
 
 MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
   /**
-   * TODO:
+   * 
    * Calculate a Jacobian here.
    */
    MatrixXd Hj=MatrixXd(3,4);
@@ -64,8 +64,7 @@ MatrixXd Tools::CalculateJacobian(const VectorXd& x_state) {
   float py = x_state(1);
   float vx = x_state(2);
   float vy = x_state(3);
-
-  // TODO: YOUR CODE HERE 
+ 
 
   // check division by zero
   float den=px*px+py*py;
@@ -91,7 +90,7 @@ double Tools::NormalizeAngle(double angle){
 }
 
 VectorXd Tools::Cartesian2Polar(const VectorXd& x_cartesian){
-	
+  // code Transform the cartesian to polar coordinate	
   VectorXd x_polar(3);
   x_polar<<0,0,0;  
 	

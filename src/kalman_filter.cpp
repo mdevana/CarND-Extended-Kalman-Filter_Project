@@ -4,8 +4,11 @@ using Eigen::MatrixXd;
 using Eigen::VectorXd;
 
 /* 
- * Please note that the Eigen library does not initialize 
- *   VectorXd or MatrixXd objects with zeros upon creation.
+ * This is the class where the complete Kalmin Filter equations
+ * for predict and update steps are implemented. Update function  
+ * is further spilt to handle Lidar and Radar cases. For Radar Case,
+ * Extended Kalman filter equations are implemented. For Lidar case,
+ * Linaer Kalman Filter equatons are implemented 
  */
 
 KalmanFilter::KalmanFilter() {}
@@ -24,7 +27,7 @@ void KalmanFilter::Init(VectorXd &x_in, MatrixXd &P_in, MatrixXd &F_in,
 
 void KalmanFilter::Predict() {
   /**
-   * TODO: predict the state
+   * Predict the state x Vector
    */
    x_ = F_ * x_ ;
    P_ = F_ * P_ * F_.transpose() + Q_ ;
@@ -32,7 +35,8 @@ void KalmanFilter::Predict() {
 
 void KalmanFilter::Update(const VectorXd &z) {
   /**
-   * TODO: update the state by using Kalman Filter equations
+   * update the state by using Linaer Kalman Filter equations
+   * Used for Lidar measurements
    */
    VectorXd y = z - H_ * x_ ;
    MatrixXd S = H_ * P_ * H_.transpose() + R_ ;
@@ -47,7 +51,9 @@ void KalmanFilter::Update(const VectorXd &z) {
 
 void KalmanFilter::UpdateEKF(const VectorXd &z) {
   /**
-   * TODO: update the state by using Extended Kalman Filter equations
+   * update the state by using Extended Kalman Filter equations
+   * used for Radar mesurements. Transform from cartesian to polar coordinates
+   * Calculate Kalman gain and use it to update the correct state vector
    */
    VectorXd y = z - tools.Cartesian2Polar(x_);//transformation cartesian to polar
    y(1)=tools.NormalizeAngle(y(1));
